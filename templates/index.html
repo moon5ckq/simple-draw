@@ -3,28 +3,37 @@
 {% block title %}
 抽奖程序
 {% endblock title %}
-
+<style>
+</style>
 {% block body %}
-<div class="container">
-<h1>“搜狗杯”智能体大赛现场总决赛 观众抽奖</h1>
-
-<ul class="nav nav-tabs">
-  <li id="p3" class="active">
-    <a href="#">三等奖</a>
-  </li>
-  <li id="p2"><a href="#">二等奖</a></li>
-  <li id="p1"><a href="#">一等奖</a></li>
-  <li id="p0"><a href="#">特等奖</a></li>
-</ul>
-<div class="row">
-    <img id="show-img" src="static/img/3.pic.jpg" height="300pt" class="img-circle">
+<div class="container" style="border:1px solid #9933CC; border-radius:10px;padding-bottom:20px;">
+<div style="text-align:center;padding-bottom:40px;">
+ <h1>“搜狗杯”智能体大赛现场总决赛 观众抽奖</h1>
 </div>
-
-<div class="row">
-    <input type="text" id="oknum" name="oknum" value="000" />
+<div style="display:inline;">
+	<div style="font-size:22px;">
+	<ul class="nav nav-tabs" style="padding-left:32%;">
+		<li id="p3" class="active">
+			<a href="#">三等奖</a>
+		</li>
+		<li id="p2"><a href="#">二等奖</a></li>
+		<li id="p1"><a href="#">一等奖</a></li>
+		<li id="p0"><a href="#">特等奖</a></li>
+	</ul>
 </div>
-<div class="row">
-    <button class="btn" onclick="start()">开始</button>
+    <div style="width:65%;float:left;padding-right:20px;border-right:1px solid #CCCCCC;">
+	<div class="row" align="center" style="padding:10px 0px;flaot:left;">
+		<img id="show-img" src="static/img/4.pic.jpg" height="300pt" class="img-circle">
+	</div>
+	</div>
+	<div class="row" style="width:30%;padding:40px 25px;float:right;">
+        <div>
+		  <input type="text" id="oknum" name="oknum" value="000" disabled="disabled" style="font-size:100px;font-weight:200; width:80%;border:0px;text-align:center;"/>
+        </div>
+        <div style="padding-left:20px;">
+		  <button onclick="start()" class="button button-royal button-pill button-giant">开始</button>
+        </div>
+	</div>
 </div>
 </div>
 
