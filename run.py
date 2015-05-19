@@ -6,7 +6,7 @@
 #
 # Distributed under terms of the MIT license.
 
-import sys, random
+import sys, random, math
 from flask import Flask, render_template
 from flask.ext.sqlalchemy import SQLAlchemy
 
@@ -50,7 +50,7 @@ def random_num(m):
     with open(path, 'w') as f:
         f.write( ','.join(map(str, list(dis))) )
 
-    return str(ret)
+    return ('%0' + str(int(math.ceil(math.log(m + 1, 10)))) + 'd') % ret
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=23333, debug=True)
