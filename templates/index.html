@@ -3,90 +3,153 @@
 {% block title %}
 抽奖程序
 {% endblock title %}
+{% block style_navbar_padding %}
 <style>
+body {
+  background: #222;
+}
+h1 {
+  color: white;
+  margin-top: 100px;
+}
+#top-nav {
+  text-align: center;
+  margin-bottom: 50px;
+}
+#top-nav li{
+  float: none;
+  display: inline-block;
+}
+
+#oknum {
+  font-size: 100px;
+  font-weight: bold;
+  width: 80%;
+  text-align: center;
+  background: transparent;
+  border: none;
+  color: white;
+}
+#icon1,
+#icon2,
+#icon3 {
+  height: 60px;
+  margin-left: 20px;
+  float: left;
+}
+#icon1 {
+  margin-top: -10px;
+  height: 100px;
+  float: left;
+}
+#icon3 {
+  margin-top: 20px;
+  height: 30px;
+  float: right;
+}
+#icons {
+  margin-top: 30px;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+  background: transparent;
+  color: white;
+}
+.nav-tabs>li>a {
+  color: #666;
+}
 </style>
+{% endblock style_navbar_padding%}
 {% block body %}
-<div class="container" style="border:1px solid #9933CC; border-radius:10px;padding-bottom:20px;">
-<div style="text-align:center;padding-bottom:40px;">
- <h1>“搜狗杯”智能体大赛现场总决赛 观众抽奖</h1>
-</div>
-<div style="display:inline;">
-	<div style="font-size:22px;">
-	<ul class="nav nav-tabs" style="padding-left:32%;">
-		<li id="p3" class="active">
-			<a href="#">三等奖</a>
-		</li>
-		<li id="p2"><a href="#">二等奖</a></li>
-		<li id="p1"><a href="#">一等奖</a></li>
-		<li id="p0"><a href="#">特等奖</a></li>
-	</ul>
-</div>
-    <div style="width:65%;float:left;padding-right:20px;border-right:1px solid #CCCCCC;">
-	<div class="row" align="center" style="padding:10px 0px;flaot:left;">
-		<img id="show-img" src="static/img/4.pic.jpg" height="300pt" class="img-circle">
-	</div>
-	</div>
-	<div class="row" style="width:30%;padding:40px 25px;float:right;">
-        <div>
-		  <input type="text" id="oknum" name="oknum" value="000" disabled="disabled" style="font-size:100px;font-weight:200; width:80%;border:0px;text-align:center;"/>
-        </div>
-        <div style="padding-left:20px;">
-		  <button onclick="start()" class="button button-royal button-pill button-giant">开始</button>
-        </div>
-	</div>
-</div>
+<div class="container" >
+  <div style="text-align:center;padding-bottom:40px;">
+    <h1>“搜狗杯”智能体大赛现场总决赛 观众抽奖</h1>
+  </div>
+  <div style="font-size:22px;">
+    <ul class="nav nav-tabs" style="" id="top-nav">
+      <li id="p3" class="active">
+        <a href="#">三等奖</a>
+      </li>
+      <li id="p2"><a href="#">二等奖</a></li>
+      <li id="p1"><a href="#">一等奖</a></li>
+      <li id="p0"><a href="#">特等奖</a></li>
+    </ul>
+  </div>
+  <div class="row">
+    <div style="width:60%;float:left;padding-right:20px;">
+      <div align="center" style="padding:10px 0px;flaot:left;">
+        <img id="show-img" src="static/img/4.pic.jpg" height="300pt" class="img-circle">
+      </div>
+    </div>
+    <div style="width:40%;padding:80px 25px;float:right;">
+      <div>
+        <input type="text" id="oknum" name="oknum" value="000" disabled="disabled"/>
+      </div>
+    </div>
+  </div>
+  <div class="row" id="icons">
+    <img src="static/img/b.png" id="icon2">
+    <img src="static/img/a.png" id="icon1">
+    <img src="static/img/c.png" id="icon3">
+  </div>
 </div>
 
 <script>
 var alldataarr = [], max_num = 100;
 for (var i = 1; i <= max_num; ++i)
-    alldataarr.push(pad(i, 3));
+alldataarr.push(pad(i, 3));
 var timer, result = true;
 function change(){
-    $('#oknum').val(alldataarr[GetRnd(0,alldataarr.length)]);
+  $('#oknum').val(alldataarr[GetRnd(0,alldataarr.length)]);
 }
 function start(){
-    clearInterval(timer);
-    if (result == true) {
-        timer = setInterval('change()', 30);
-        $.ajax({ url: '/random/' + max_num, success: function(data) {
-                result = data;
-            }});
-    } else {
-        $('#oknum').val(result);
-        result = true;
-    }
+  clearInterval(timer);
+  if (result == true) {
+    timer = setInterval('change()', 30);
+    $.ajax({ url: '/random/' + max_num, success: function(data) {
+      result = data;
+    }});
+  } else {
+    $('#oknum').val(result);
+    result = true;
+  }
 }
 function GetRnd(min, max){
-    return parseInt(Math.random()*(max-min));
+  return parseInt(Math.random()*(max-min));
 }
 function pad(num, n) {
-    var len = num.toString().length;
-    while(len < n) {
-        num = "0" + num;
-        len++;
-    }  
-    return num;
+  var len = num.toString().length;
+  while(len < n) {
+    num = "0" + num;
+    len++;
+  }  
+  return num;
 }
 
 $("li").click(function() {
-    var id = $(this).attr("id");
-    for (var i = 0; i <= 3; ++i)
-        $('#p'+i).attr('class', '');
-    $('#'+id).attr('class', 'active');
-    var img = $('#show-img');
-    if (id == 'p0') {
-        img.attr('src', 'static/img/1.pic.jpg');
-    } else if (id == 'p1') {
-        img.attr('src', 'static/img/2.pic.jpg');
-    } else if (id == 'p2') {
-        img.attr('src', 'static/img/3.pic.jpg');
-    } else if (id == 'p3') {
-        img.attr('src', 'static/img/4.pic.jpg');
-    }
+  var id = $(this).attr("id");
+  for (var i = 0; i <= 3; ++i)
+    $('#p'+i).attr('class', '');
+  $('#'+id).attr('class', 'active');
+  var img = $('#show-img');
+  if (id == 'p0') {
+    img.attr('src', 'static/img/1.pic.jpg');
+  } else if (id == 'p1') {
+    img.attr('src', 'static/img/2.pic.jpg');
+  } else if (id == 'p2') {
+    img.attr('src', 'static/img/3.pic.jpg');
+  } else if (id == 'p3') {
+    img.attr('src', 'static/img/4.pic.jpg');
+  }
 });
 
-</script> 
+$('body').on('keyup', function(e) {
+  if (e.keyCode == 32) {
+    start();
+  }
+});
+
+
+</script>
 
 {% endblock body %}
 

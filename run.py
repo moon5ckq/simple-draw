@@ -8,12 +8,12 @@
 
 import sys, random, math
 from flask import Flask, render_template
-from flask.ext.sqlalchemy import SQLAlchemy
+#from flask.ext.sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy()
+#db = SQLAlchemy()
 app = Flask(__name__)
-db.init_app(app)
-db.app = app
+#db.init_app(app)
+#db.app = app
 
 '''
 class Test(db.Model):
