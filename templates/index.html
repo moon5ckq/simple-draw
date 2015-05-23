@@ -10,7 +10,7 @@ body {
 }
 h1 {
   color: white;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 #top-nav {
   text-align: center;
@@ -66,18 +66,22 @@ h1 {
   </div>
   <div style="font-size:22px;">
     <ul class="nav nav-tabs" style="" id="top-nav">
-      <li id="p3" class="active">
-        <a href="#">三等奖</a>
+      <li id="p0" class="active">
+        <a href="#">Round 1(I)</a>
       </li>
-      <li id="p2"><a href="#">二等奖</a></li>
-      <li id="p1"><a href="#">一等奖</a></li>
-      <li id="p0"><a href="#">特等奖</a></li>
+      <li id="p1"><a href="#">Round 1(II)</a></li>
+      <li id="p2"><a href="#">Round 1(III)</a></li>
+      <li id="p3"><a href="#">Round 2(I)</a></li>
+      <li id="p4"><a href="#">Round 2(II)</a></li>
+      <li id="p5"><a href="#">Round 2(III)</a></li>
     </ul>
   </div>
   <div class="row">
     <div style="width:60%;float:left;padding-right:20px;">
-      <div align="center" style="padding:10px 0px;flaot:left;">
-        <img id="show-img" src="static/img/4.pic.jpg" height="300pt" class="img-circle">
+      <div align="center" style="padding:10px 0px 0px 0px;flaot:left;">
+        <img id="show-img1" src="static/img/1st/31.jpg" width="250pt" class="img-circle">
+        <img id="show-img2" src="static/img/1st/32.jpg" width="250pt" class="img-circle">
+        <img id="show-img3" src="" width="300pt" class="img-circle" hidden>
       </div>
     </div>
     <div style="width:40%;padding:80px 25px;float:right;">
@@ -127,18 +131,54 @@ function pad(num, n) {
 
 $("li").click(function() {
   var id = $(this).attr("id");
-  for (var i = 0; i <= 3; ++i)
+  for (var i = 0; i <= 5; ++i)
     $('#p'+i).attr('class', '');
   $('#'+id).attr('class', 'active');
-  var img = $('#show-img');
+  var img1 = $('#show-img1');
+  var img2 = $('#show-img2');
+  var img3 = $('#show-img3');
   if (id == 'p0') {
-    img.attr('src', 'static/img/1.pic.jpg');
+    img1.attr('src', 'static/img/1st/31.jpg');
+    img1.attr('width', '250pt');
+    img1.show();
+    img2.attr('src', 'static/img/1st/32.jpg');
+    img2.attr('width', '250pt');
+    img2.show();
+    img3.hide();
   } else if (id == 'p1') {
-    img.attr('src', 'static/img/2.pic.jpg');
+    img1.attr('src', 'static/img/1st/2.jpg');
+    img1.attr('width', '400pt');
+    img1.show();
+    img2.hide();
+    img3.hide();
   } else if (id == 'p2') {
-    img.attr('src', 'static/img/3.pic.jpg');
+    img1.attr('src', 'static/img/1st/1.jpg');
+    img1.attr('width', '300pt');
+    img1.show();
+    img2.hide();
+    img3.hide();
   } else if (id == 'p3') {
-    img.attr('src', 'static/img/4.pic.jpg');
+    img1.attr('src', 'static/img/2nd/31.jpg');
+    img1.attr('width', '190pt');
+    img1.show();
+    img2.attr('src', 'static/img/2nd/32.jpg');
+    img2.attr('width', '190pt');
+    img2.show();
+    img3.attr('src', 'static/img/2nd/33.jpg');
+    img3.attr('width', '190pt');
+    img3.show();
+  } else if (id == 'p4') {
+    img1.attr('src', 'static/img/2nd/2.jpg');
+    img1.attr('width', '300pt');
+    img1.show();
+    img2.hide();
+    img3.hide();
+  } else if (id == 'p5') {
+    img1.attr('src', 'static/img/2nd/1.jpg');
+    img1.attr('width', '300pt');
+    img1.show();
+    img2.hide();
+    img3.hide();
   }
 });
 
