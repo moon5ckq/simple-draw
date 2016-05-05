@@ -53,4 +53,4 @@ def random_num(m):
     return ('%0' + str(int(math.ceil(math.log(m + 1, 10)))) + 'd') % ret
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=23333, debug=True)
+    app.run(host="0.0.0.0", port=23333, debug=False)
