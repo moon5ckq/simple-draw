@@ -67,20 +67,20 @@ h1 {
   <div style="font-size:22px;">
     <ul class="nav nav-tabs" style="" id="top-nav">
       <li id="p0" class="active">
-        <a href="#">Round 1(I)</a>
+        <a href="#">Round 1</a>
       </li>
-      <li id="p1"><a href="#">Round 1(II)</a></li>
-      <li id="p2"><a href="#">Round 2(I)</a></li>
-      <li id="p3"><a href="#">Round 2(II)</a></li>
+      <li id="p1"><a href="#">Round 2</a></li>
+      <li id="p2"><a href="#">Round 3</a></li>
+<!--      <li id="p3"><a href="#">Round 2(II)</a></li>
       <li id="p4"><a href="#">Round 3(I)</a></li>
-      <li id="p5"><a href="#">Round 3(II)</a></li>
+      <li id="p5"><a href="#">Round 3(II)</a></li> -->
     </ul>
   </div>
   <div class="row">
     <div style="width:60%;float:left;padding-right:20px;">
       <div align="center" style="padding:10px 0px 0px 0px;flaot:left;">
-        <img id="show-img1" src="static/img/1st/31.jpg" width="250pt" class="img-circle">
-        <img id="show-img2" src="static/img/1st/32.jpg" width="250pt" class="img-circle">
+        <img id="show-img1" src="static/img/ai9-3.jpg" width="400pt" class="img-circle">
+        <img id="show-img2" src="" width="250pt" class="img-circle" hidden>
         <img id="show-img3" src="" width="300pt" class="img-circle" hidden>
       </div>
     </div>
@@ -138,22 +138,20 @@ $("li").click(function() {
   var img2 = $('#show-img2');
   var img3 = $('#show-img3');
   if (id == 'p0') {
-    img1.attr('src', 'static/img/1st/31.jpg');
-    img1.attr('width', '250pt');
+    img1.attr('src', 'static/img/ai9-3.jpg');
+    img1.attr('width', '400pt');
     img1.show();
-    img2.attr('src', 'static/img/1st/32.jpg');
-    img2.attr('width', '250pt');
-    img2.show();
+    img2.hide();
     img3.hide();
   } else if (id == 'p1') {
-    img1.attr('src', 'static/img/1st/2.jpg');
+    img1.attr('src', 'static/img/ai9-2.jpg');
     img1.attr('width', '400pt');
     img1.show();
     img2.hide();
     img3.hide();
   } else if (id == 'p2') {
-    img1.attr('src', 'static/img/1st/1.jpg');
-    img1.attr('width', '300pt');
+    img1.attr('src', 'static/img/ai9-1.jpg');
+    img1.attr('width', '400pt');
     img1.show();
     img2.hide();
     img3.hide();
